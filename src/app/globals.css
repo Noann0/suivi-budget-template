@@ -1,0 +1,208 @@
+@import "tailwindcss";
+
+/* ---------------------------------------------------------------------------
+   Tokens systeme. Toutes les valeurs viennent de design/DESIGN_PLAN.md.
+   Elles sont mesurees (contrastes WCAG, simulation protanopie/deuteranopie),
+   pas choisies au gout. Ne pas retoucher sans refaire la mesure.
+   --------------------------------------------------------------------------- */
+
+@theme {
+  /* Section 2 du plan : surfaces, encre, verdicts, accent */
+  --color-bg: #f6f1e7;
+  --color-surface: #fcf8f0;
+  --color-raised: #fffdf8;
+  --color-line: #e4daca;
+  --color-ink: #2a2118;
+  --color-ink-soft: #6b5c4c;
+  --color-positive: #1e7a46;
+  --color-positive-soft: #e4efe2;
+  --color-negative: #b3362b;
+  --color-negative-soft: #f7e3de;
+  --color-accent: #b4552b;
+  --color-accent-ink: #a34a22;
+  /* Fond d'une ligne reportee non confirmee (section 6 du plan) */
+  --color-carried: #f1e9da;
+
+  /* Section 4 : deux grotesques chaleureuses, zero plein verifie glyphe par glyphe */
+  --font-display: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
+  --font-body: var(--font-familjen), ui-sans-serif, system-ui, sans-serif;
+
+  /* Section 5 : rayons */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+
+  --shadow-sheet: 0 4px 16px rgb(42 33 24 / 0.1);
+  --shadow-raised: 0 1px 2px rgb(42 33 24 / 0.05);
+
+  /* Section 5 : au dela de 768px on borne la colonne de lecture */
+  --container-reading: 640px;
+}
+
+/* ---------------------------------------------------------------------------
+   Section 3 : 16 teintes, 3 valeurs chacune.
+   `soft` et `vivid` sont deux intensites de la MEME teinte, `ink` est partagee
+   par les deux et c'est la seule qui porte du texte (AA 4.6+ sur creme).
+   Une pastel ne porte jamais de texte : c'est un rejet mesure.
+   --------------------------------------------------------------------------- */
+:root {
+  --cat-1-soft: #e7a6a4;  --cat-1-vivid: #d58d87;  --cat-1-ink: #a75254;
+  --cat-2-soft: #fbbeaf;  --cat-2-vivid: #f47e6a;  --cat-2-ink: #a35646;
+  --cat-3-soft: #f5d8ac;  --cat-3-vivid: #cc9641;  --cat-3-ink: #87682c;
+  --cat-4-soft: #cdb474;  --cat-4-vivid: #887c11;  --cat-4-ink: #7f6b2b;
+  --cat-5-soft: #dbd48f;  --cat-5-vivid: #749653;  --cat-5-ink: #716e2b;
+  --cat-6-soft: #a9c08d;  --cat-6-vivid: #52782a;  --cat-6-ink: #567536;
+  --cat-7-soft: #9fe6c2;  --cat-7-vivid: #227d60;  --cat-7-ink: #1d7a56;
+  --cat-8-soft: #90c9c5;  --cat-8-vivid: #21847f;  --cat-8-ink: #067a75;
+  --cat-9-soft: #9eeaec;  --cat-9-vivid: #22b0c5;  --cat-9-ink: #08797d;
+  --cat-10-soft: #75d7fe; --cat-10-vivid: #08899a; --cat-10-ink: #0a7695;
+  --cat-11-soft: #ade3fd; --cat-11-vivid: #38a6d6; --cat-11-ink: #077696;
+  --cat-12-soft: #88c0fd; --cat-12-vivid: #4179d4; --cat-12-ink: #2371ac;
+  --cat-13-soft: #c1ade1; --cat-13-vivid: #7e9af2; --cat-13-ink: #7862a0;
+  --cat-14-soft: #c7b4d7; --cat-14-vivid: #875ca8; --cat-14-ink: #7c6096;
+  --cat-15-soft: #fec0da; --cat-15-vivid: #d26bac; --cat-15-ink: #a15277;
+  --cat-16-soft: #eda1b6; --cat-16-vivid: #bd425a; --cat-16-ink: #a5506c;
+}
+
+/* Resolution de l'intensite globale. Un composant n'ecrit jamais `--cat-N-soft`
+   en dur : il lit `--cat-N-surface`, qui suit l'interrupteur unique du plan. */
+:root,
+[data-intensity="soft"] {
+  --cat-1-surface: var(--cat-1-soft);   --cat-2-surface: var(--cat-2-soft);
+  --cat-3-surface: var(--cat-3-soft);   --cat-4-surface: var(--cat-4-soft);
+  --cat-5-surface: var(--cat-5-soft);   --cat-6-surface: var(--cat-6-soft);
+  --cat-7-surface: var(--cat-7-soft);   --cat-8-surface: var(--cat-8-soft);
+  --cat-9-surface: var(--cat-9-soft);   --cat-10-surface: var(--cat-10-soft);
+  --cat-11-surface: var(--cat-11-soft); --cat-12-surface: var(--cat-12-soft);
+  --cat-13-surface: var(--cat-13-soft); --cat-14-surface: var(--cat-14-soft);
+  --cat-15-surface: var(--cat-15-soft); --cat-16-surface: var(--cat-16-soft);
+}
+
+[data-intensity="vivid"] {
+  --cat-1-surface: var(--cat-1-vivid);   --cat-2-surface: var(--cat-2-vivid);
+  --cat-3-surface: var(--cat-3-vivid);   --cat-4-surface: var(--cat-4-vivid);
+  --cat-5-surface: var(--cat-5-vivid);   --cat-6-surface: var(--cat-6-vivid);
+  --cat-7-surface: var(--cat-7-vivid);   --cat-8-surface: var(--cat-8-vivid);
+  --cat-9-surface: var(--cat-9-vivid);   --cat-10-surface: var(--cat-10-vivid);
+  --cat-11-surface: var(--cat-11-vivid); --cat-12-surface: var(--cat-12-vivid);
+  --cat-13-surface: var(--cat-13-vivid); --cat-14-surface: var(--cat-14-vivid);
+  --cat-15-surface: var(--cat-15-vivid); --cat-16-surface: var(--cat-16-vivid);
+}
+
+/* ---------------------------------------------------------------------------
+   Base
+   --------------------------------------------------------------------------- */
+@layer base {
+  *,
+  ::before,
+  ::after {
+    border-color: var(--color-line);
+  }
+
+  html {
+    background-color: var(--color-bg);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+    /* Elle lira ce texte sur un telephone a 50 ans : jamais sous 16px. */
+    font-size: 16px;
+    line-height: 1.5;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    background-color: var(--color-bg);
+    overscroll-behavior-y: none;
+  }
+
+  h1, h2, h3 {
+    font-family: var(--font-display);
+    font-optical-sizing: auto;
+  }
+
+  /* Anneau de focus visible partout, pour l'usage clavier sur l'ordinateur. */
+  :focus-visible {
+    outline: 2px solid var(--color-accent-ink);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  /* Chrome Android : supprime les fleches de spinner sur les champs numeriques. */
+  input[inputmode="decimal"]::-webkit-outer-spin-button,
+  input[inputmode="decimal"]::-webkit-inner-spin-button {
+    appearance: none;
+    margin: 0;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Utilitaires
+   --------------------------------------------------------------------------- */
+
+/* Tout montant affiche passe par ici.
+   MESURE (2026-08-30, fontTools sur les woff2 servis par Google) :
+   - Familjen Grotesk : chiffres deja tabulaires par defaut, chasse unique 680.
+   - Bricolage Grotesque : chiffres PROPORTIONNELS par defaut (0 = 594, 1 = 310).
+     La feature `tnum` existe et mappe vers des variantes .tf toutes a 580.
+   Sans cette classe, le montant hero en Bricolage danse pendant le compteur
+   et les colonnes de montants ne s'alignent plus. Elle n'est pas decorative. */
+@utility amount {
+  font-variant-numeric: tabular-nums lining-nums;
+  font-feature-settings: "tnum" 1;
+  letter-spacing: 0;
+}
+
+/* Cible tactile minimale du plan (section 5). */
+@utility tap {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+@utility card {
+  background-color: var(--color-surface);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-line);
+}
+
+/* ---------------------------------------------------------------------------
+   Animations (section 9 du plan). CSS vanilla, aucune lib.
+   --------------------------------------------------------------------------- */
+@keyframes bud-fade-up {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@keyframes bud-sheet-in {
+  from { transform: translateY(100%); }
+  to   { transform: none; }
+}
+
+@keyframes bud-check-pop {
+  0%   { transform: scale(0.4); opacity: 0; }
+  60%  { transform: scale(1.12); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.bud-fade-up { animation: bud-fade-up 220ms ease-out both; }
+.bud-sheet-in { animation: bud-sheet-in 240ms cubic-bezier(0.22, 1, 0.36, 1) both; }
+.bud-check-pop { animation: bud-check-pop 300ms ease-out both; }
+
+/* Repli, pas suppression : les etats finaux restent atteints, seule la duree tombe. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 150ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .bud-fade-up,
+  .bud-sheet-in,
+  .bud-check-pop {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}

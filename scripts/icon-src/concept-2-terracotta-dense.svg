@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<!-- DERIVE, ne pas editer a la main.
+     Source : design/icon-concepts/concept-2-dense.svg (perimetre de designer).
+     Transformation : substitution terracotta de design/ICON_PLAN.md, section
+     "Variante dense", dernier point. Exactement deux attributs fill permutes :
+       - le <rect> plein cadre : #F6F1E7 -> #B4552B
+       - le <path> du secteur terracotta : #B4552B -> #F6F1E7
+     Les ecarts angulaires et le trou central sont des VIDES, pas des formes :
+     ils suivent donc le fond automatiquement, conformement a la ligne "Ecarts
+     et trou : couleur du fond" du tableau de couleurs. Miel et sauge inchanges.
+     Re-deriver : python3 scripts/icon-src/derive-terracotta.py design/icon-concepts/concept-2-dense.svg scripts/icon-src/concept-2-terracotta-dense.svg
+     Ne sert QUE le favicon.ico aux tailles 16 et 32. -->
+  <!-- Concept 2, variante DENSE pour le .ico (16 et 32 px uniquement).
+       3 secteurs au lieu de 4, anneau epaissi (R 200, trou 72, largeur 128),
+       separations elargies a 14 deg (33 px d'arc a 512, soit >= 1 px a 16 px).
+       Ne sert JAMAIS le lanceur : la zone sure maskable n'est pas requise ici. -->
+  <rect width="512" height="512" fill="#B4552B"/>
+  <path d="M 280.4 57.5 A 200 200 0 0 1 334.1 440.1 L 284.1 322.3 A 72 72 0 0 0 264.8 184.5 Z" fill="#F6F1E7"/>
+  <path d="M 287.3 453.5 A 200 200 0 0 1 56.0 252.5 L 184.0 254.7 A 72 72 0 0 0 267.3 327.1 Z" fill="#CC9641"/>
+  <path d="M 62.8 204.2 A 200 200 0 0 1 231.6 57.5 L 247.2 184.5 A 72 72 0 0 0 186.5 237.4 Z" fill="#52782A"/>
+</svg>

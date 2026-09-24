@@ -1,0 +1,55 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# env files (can opt-in for committing if needed)
+.env*
+# ...sauf le modele documente, qui DOIT etre versionne : c'est lui qui dit a Dokploy
+# quelles variables saisir. Sans cette exception, .env* l'aurait avale silencieusement.
+!.env.example
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# donnees applicatives (volume Docker en prod, fichier local en dev)
+/data/
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+
+# Scratch QA (temporaire, a supprimer en fin de session)
+.qa-*
+.backups/

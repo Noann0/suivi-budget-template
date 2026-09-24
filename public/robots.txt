@@ -1,0 +1,4 @@
+# Application privee a usage strictement personnel.
+# Aucune page ne doit etre indexee.
+User-agent: *
+Disallow: /

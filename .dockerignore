@@ -1,0 +1,23 @@
+# Le contexte de build doit rester petit et ne jamais emporter de secret.
+node_modules
+.next
+.git
+.gitignore
+.env
+.env.*
+!.env.example
+data
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+npm-debug.log*
+.DS_Store
+coverage
+docs
+design
+e2e
+README.md
+AGENTS.md
+CLAUDE.md
+Erreurs & Solutions

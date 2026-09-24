@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="320" viewBox="0 0 1200 320" role="img" aria-labelledby="title desc">
+  <title id="title">Suivi Budget</title>
+  <desc id="desc">A dark, warm banner with a simple circular budget chart.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#18201d"/>
+      <stop offset="1" stop-color="#101714"/>
+    </linearGradient>
+    <linearGradient id="ring" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#e7a377"/>
+      <stop offset="1" stop-color="#b4552b"/>
+    </linearGradient>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0H0V32" fill="none" stroke="#f4ead8" stroke-opacity=".035"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="320" rx="22" fill="url(#bg)"/>
+  <rect width="1200" height="320" rx="22" fill="url(#grid)"/>
+  <path d="M63 65h44" stroke="#d98455" stroke-width="4" stroke-linecap="round"/>
+  <text x="63" y="101" fill="#aebcb0" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" letter-spacing="3">SELF-HOSTED FINANCE</text>
+  <text x="58" y="188" fill="#f4ead8" font-family="Arial, Helvetica, sans-serif" font-size="69" font-weight="700" letter-spacing="-3">Suivi Budget</text>
+  <text x="63" y="236" fill="#b9c5b8" font-family="Arial, Helvetica, sans-serif" font-size="22">A clearer view of what comes in, goes out, and stays.</text>
+  <circle cx="1014" cy="160" r="114" fill="none" stroke="#334138" stroke-width="34"/>
+  <circle cx="1014" cy="160" r="114" fill="none" stroke="url(#ring)" stroke-width="34" stroke-linecap="round" stroke-dasharray="384 716" transform="rotate(-90 1014 160)"/>
+  <circle cx="1014" cy="160" r="114" fill="none" stroke="#a9b58d" stroke-width="34" stroke-linecap="round" stroke-dasharray="150 716" stroke-dashoffset="-410" transform="rotate(-90 1014 160)"/>
+  <circle cx="1014" cy="160" r="57" fill="#18201d"/>
+  <path d="M990 166l17 17 32-41" fill="none" stroke="#f4ead8" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="0" y="296" width="1200" height="24" rx="12" fill="#b4552b" fill-opacity=".22"/>
+</svg>

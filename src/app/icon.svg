@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- Concept 2, tuile TERRACOTTA. Meme geometrie que concept-2.svg (R 170, trou 88,
+       gaps 8 deg, zone sure maskable respectee). Seule substitution : le secteur
+       terracotta devient creme (il etait invisible sur sa propre couleur), les trois
+       autres teintes sont inchangees : leurs ecarts daltonisme mesures (vivid, delta-E
+       min 13.3) tiennent, et miel/brique ne sont pas adjacents sur l'anneau. -->
+  <rect width="512" height="512" fill="#B4552B"/>
+  <path d="M 267.9 86.4 A 170 170 0 0 1 390.0 360.7 L 325.3 310.2 A 88 88 0 0 0 262.1 168.2 Z" fill="#F6F1E7"/>
+  <path d="M 374.1 378.3 A 170 170 0 0 1 151.3 390.0 L 201.8 325.3 A 88 88 0 0 0 317.1 319.3 Z" fill="#CC9641"/>
+  <path d="M 133.7 374.1 A 170 170 0 0 1 96.3 197.9 L 173.3 225.9 A 88 88 0 0 0 192.7 317.1 Z" fill="#52782A"/>
+  <path d="M 105.9 176.2 A 170 170 0 0 1 244.1 86.4 L 249.9 168.2 A 88 88 0 0 0 178.3 214.7 Z" fill="#D58D87"/>
+</svg>

@@ -1,0 +1,41 @@
+{
+  "name": "suivi-budget",
+  "version": "0.1.0",
+  "private": true,
+  "license": "MIT",
+  "engines": {
+    "node": ">=24.0.0"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit",
+    "test": "node --import ./tests/helpers/register.mjs --test tests/*.test.ts",
+    "db:migrate": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --env-file-if-exists=.env src/db/migrate-cli.ts",
+    "db:opening-balance": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON src/db/opening-balance-cli.ts"
+  },
+  "dependencies": {
+    "@simplewebauthn/browser": "13.3.0",
+    "@simplewebauthn/server": "13.3.3",
+    "clsx": "2.1.1",
+    "lucide-react": "1.37.0",
+    "next": "16.3.3",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "tailwind-merge": "3.6.0",
+    "zod": "4.5.4"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "4.3.3",
+    "@types/node": "24.13.3",
+    "@types/react": "19.2.18",
+    "@types/react-dom": "19.2.5",
+    "eslint": "9.39.5",
+    "eslint-config-next": "16.3.3",
+    "playwright": "1.62.1",
+    "tailwindcss": "4.3.3",
+    "typescript": "6.0.3"
+  }
+}
