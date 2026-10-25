@@ -3,7 +3,8 @@
 # Image de base epinglee a une version precise. Jamais de tag "latest" : un rebuild
 # six mois plus tard doit produire exactement la meme base, sinon un deploiement
 # routinier devient une mise a jour surprise de l'environnement d'execution.
-ARG NODE_IMAGE=node:24.19.0-bookworm-slim
+# node 24.22.1 (20/10/2026) est la publication de securite de la ligne 24 (RCE Brotli).
+ARG NODE_IMAGE=node:24.22.1-bookworm-slim
 
 # ---------------------------------------------------------------------------
 # Etage 1 : dependances
@@ -49,6 +50,14 @@ ENV DATABASE_PATH=/data/budget.db
 # Le repertoire de donnees lui appartient, sans quoi le conteneur ne pourrait pas
 # creer le fichier SQLite au premier demarrage.
 RUN mkdir -p /data && chown -R node:node /data
+
+# Le serveur ne lance que `node server.js` : npm, npx, corepack et yarn ne servent
+# pas a l'execution. Ils embarquent leurs propres dependances (releve du 25/10/2026 :
+# brace-expansion 5.0.9, vulnerable, dans le npm de l'image 24.22.1), que les
+# scanners d'image signalent. On les retire de l'etage final seulement.
+RUN rm -rf /usr/local/lib/node_modules/npm /usr/local/lib/node_modules/corepack \
+    /usr/local/bin/npm /usr/local/bin/npx /usr/local/bin/corepack \
+    /opt/yarn-v* /usr/local/bin/yarn /usr/local/bin/yarnpkg
 
 # output: 'standalone' produit un serveur autonome, avec le strict necessaire de
 # node_modules deja trace. Aucun module natif a recompiler ici : le driver SQLite est
